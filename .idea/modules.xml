@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/untitled/DBMS.iml" filepath="$PROJECT_DIR$/untitled/DBMS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Project1_DBMS_Performance_Evaluation.iml" filepath="$PROJECT_DIR$/.idea/Project1_DBMS_Performance_Evaluation.iml" />
     </modules>
   </component>
 </project>

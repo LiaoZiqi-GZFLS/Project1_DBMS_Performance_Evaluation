@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="opengauss-jdbc-6.0.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/openGauss-JDBC-6.0.2.tar/openGauss-JDBC-6.0.2/opengauss-jdbc-6.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:15
+    container_name: pg-prod
+    restart: always  # 崩溃时自动重启
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: appdb
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+volumes:
+  pg_data:  # 声明命名卷
