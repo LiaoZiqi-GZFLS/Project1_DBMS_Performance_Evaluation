@@ -1,6 +1,7 @@
 # Project1_DBMS_Performance_Evaluation
 Project1_DBMS_Performance_Evaluation
 
+## Docker部署
 ```bash
 
 docker network create db-test-net
@@ -34,6 +35,21 @@ docker run -d --name opengauss-test `
 
 **宿主机访问Postgres：** `psql -U test -p 5430 postgres`
 
-**宿主机访问OpenGuss：**
+**宿主机访问OpenGuss：** `gsql -d postgres -U gaussdb -p 5431`
 
 OpenGuss新建用户：`omm=# create user test identified by "1234@Test";`
+
+## JDBC部署问题
++ open Gauss的Jdbc驱动提供了两个jar包
++ 其中一个是postgres的某个老版本jar包
++ 它的模块名和postgres的新版本驱动jar包的模块名一模一样
++ Java的类识别器无法区分
++ `Class.forName("org.postgresql.Driver");`
++ 所幸删掉旧版本jar包引用后两个数据库都可以正确连接
+
+## SQL数据库导入问题
++ open Gauss的数据库自动将空字符串转换为NULL
++ 由于people和title有not null约束
++ 所以开始SQL导入失败
++ 后来将空字符串全部转换为单空格字符串
++ 成功导入
