@@ -5,7 +5,7 @@ import java.sql.Statement;
 
 public class PostgresConnectionTest {
     // PostgreSQL默认数据库连接参数（请根据实际环境修改）
-    private static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/postgres"; // 默认数据库名为postgres
+    private static final String DB_URL = "jdbc:postgresql://127.0.0.1:5430/postgres"; // 默认数据库名为postgres
     private static final String USER = "test"; // 默认用户名
     private static final String PASS = "123456"; // 替换为你的数据库密码
 
