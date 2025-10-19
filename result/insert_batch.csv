@@ -1,0 +1,4 @@
+DBMS,TotalTime(ms),PerRow(ms)
+PostgreSQL,35.05,0.035049
+openGauss,41.56,0.041560
+File,3.36,0.003358
