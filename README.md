@@ -54,6 +54,21 @@ OpenGuss新建用户：`omm=# create user test identified by "1234@Test";`
 + 后来将空字符串全部转换为单空格字符串
 + 成功导入
 
+> 使用 $filmdb.sql$ 数据导入$Postgres$与$openGauss$的名为$postgres$的数据库
+
+## 快速开始
++ JdbcConn.java： open Gauss 版本查询
++ PostgresConnectionTest.java：postgres 版本查询
++ ExportTableToCsv.java：从数据库中输出csv表格
++ CompareDBSpeed.java：10秒内查询QPS
++ CompareSQLvsFile.java：Postgres数据库、openGauss数据库、Java文件IO 10次查询与更新 时间对比
++ ComparePerformance.java：上面三种查询方法的单并发与多并发select，以及两种数据库的插入，得到QPS
++ ComparePerformanceEnhanced.java：比上面增加了q99与q95统计
++ plot_mul_result.py：转换csv表格为图片
++ generate_visual_reports.py：为ComparePerformanceEnhanced.java生成柱状图
++ plot_result.py：为CompareSQLvsFile.java生成折线图
++ plot_results.py：比上面增加了柱状图与方差稳定性统计
+
 ## ✅ 那么我们先明确应该选择哪些测试指标 + 哪些地方可以加入文件对比：
 | 测试维度  | PostgreSQL vs openGauss     | Java 文件读取是否可加入？           | 可行性                      | 备注                           |
 |-------|-----------------------------|---------------------------|--------------------------|------------------------------|
@@ -66,3 +81,10 @@ OpenGuss新建用户：`omm=# create user test identified by "1234@Test";`
 | 7. 分析型复杂查询（EXPLAIN + 全表扫描 vs 文件搜索）| ✅                           | ✅                         | ✔ 推荐	                    | SQL执行时间 vs Java遍历文件过滤排序      |
 | 8. 并发锁冲突/死锁| ✅| ❌| ✔	                       | 文件无锁机制，无法比较                  |
 | 9. TPC-H/OLAP复杂查询| ✅| ❌	| ⚠复杂	| 文件难以做到 join/group by         |
+
+## ✅ 最合理 & 可实现 & 可比较 文件 vs PostgreSQL vs openGauss 的测试项
+| 测试编号  | 测试内容                    | PostgreSQL | openGauss | Java 文件读取   | 是否生成CSV |
+| ----- | ----------------------- | ---------- | --------- | ----------- | ------- |
+| **①** | 单线程 SELECT LIKE '%xxx%' | ✅          | ✅         | ✅           | ✅       |
+| **②** | 多线程 SELECT（并发性能/QPS）    | ✅          | ✅         | ✅（模拟并发文件扫描） | ✅       |
+| **③** | 批量 INSERT（1000条）        | ✅          | ✅         | ✅（文件追加写入）   | ✅       |
