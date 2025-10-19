@@ -64,10 +64,12 @@ OpenGuss新建用户：`omm=# create user test identified by "1234@Test";`
 + CompareSQLvsFile.java：Postgres数据库、openGauss数据库、Java文件IO 10次查询与更新 时间对比
 + ComparePerformance.java：上面三种查询方法的单并发与多并发select，以及两种数据库的插入，得到QPS
 + ComparePerformanceEnhanced.java：比上面增加了q99与q95统计
++ HardBenchmarkTest.java：压测不同线程的QPS与TPS
 + plot_mul_result.py：转换csv表格为图片
 + generate_visual_reports.py：为ComparePerformanceEnhanced.java生成柱状图
 + plot_result.py：为CompareSQLvsFile.java生成折线图
 + plot_results.py：比上面增加了柱状图与方差稳定性统计
++ plot_hard_benchmark.py：为HardBenchmarkTest.java生成图表数据
 
 ## ✅ 那么我们先明确应该选择哪些测试指标 + 哪些地方可以加入文件对比：
 | 测试维度  | PostgreSQL vs openGauss     | Java 文件读取是否可加入？           | 可行性                      | 备注                           |
